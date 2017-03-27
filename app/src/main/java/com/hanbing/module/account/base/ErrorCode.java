@@ -35,4 +35,7 @@ public interface ErrorCode {
     int MOBILE_EXIST = 1109;
     int MOBILE_NOT_EXIST = 1110;
 
+    int BIND_ALREADY_USED = 1201;
+    int UNBIND_NOT_BIND = 1202;
+    int UNBIND_ONE_LEAST = 1203;
 }

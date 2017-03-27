@@ -1,5 +1,6 @@
 package com.hanbing.module.account.login;
 
+import android.app.Activity;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -9,6 +10,7 @@ import com.hanbing.module.account.base.ErrorCode;
 import com.hanbing.module.account.base.ErrorCodeManager;
 import com.hanbing.module.account.base.HttpRequestCallback;
 import com.hanbing.module.account.base.HttpService;
+import com.hanbing.module.account.bind.AuthPresenter;
 
 import javax.inject.Inject;
 
@@ -16,7 +18,7 @@ import javax.inject.Inject;
  * Created by hanbing on 2017/3/3
  */
 
-public class LoginPresenter implements LoginContract.Presenter {
+public class LoginPresenter extends AuthPresenter implements LoginContract.Presenter {
 
 
     LoginContract.View mView;
@@ -25,13 +27,17 @@ public class LoginPresenter implements LoginContract.Presenter {
     HttpService mHttpService;
     HttpService.Task mTask;
 
-    public LoginPresenter(LoginContract.View view) {
+    public LoginPresenter(LoginContract.View view, HttpService httpService) {
         assert view != null;
         mView = view;
+        assert null != httpService;
+        mHttpService = httpService;
     }
 
+
     @Inject
-    public LoginPresenter(LoginContract.View view, HttpService httpService) {
+    public LoginPresenter(Activity activity, LoginContract.View view, HttpService httpService) {
+        super(activity, view);
         assert view != null;
         mView = view;
         assert null != httpService;

@@ -3,6 +3,7 @@ package com.hanbing.module.account.login;
 import com.hanbing.module.account.BasePresenter;
 import com.hanbing.module.account.BaseView;
 import com.hanbing.module.account.bean.IUser;
+import com.hanbing.module.account.bind.AuthContract;
 
 /**
  * Created by hanbing on 2017/3/3
@@ -10,8 +11,7 @@ import com.hanbing.module.account.bean.IUser;
 
 public class LoginContract {
 
-    public interface View extends BaseView<Presenter> {
-
+    public interface View extends AuthContract.View<Presenter> {
 
         String getUsername();
 

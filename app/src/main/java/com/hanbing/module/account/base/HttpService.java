@@ -40,7 +40,7 @@ public class HttpService {
     private static final String TAG = "HttpService";
 
     /**
-     * 请求任务
+     * Http Request Task
      */
     public static class Task {
 
@@ -55,8 +55,7 @@ public class HttpService {
         }
 
         /**
-         * 取消任务
-         * 可能并不是真正中断或取消，只是不回调结果
+         * Cancel task
          */
         public void cancel() {
             if (null != mSubscription && !mSubscription.isDisposed())
@@ -192,18 +191,9 @@ public class HttpService {
                 try {
 
                     if (TextUtils.isEmpty(result)) {
-                        //没有数据，抛出异常
-                        throw new IOException("");
+                        //no data, throws exception
+                        throw new IOException("No data");
                     }
-
-                    //如果是mingBase类型数据
-                    Type stringType = new TypeToken<String>() {
-                    }.getType();
-
-                    if (type != stringType) {
-
-                    }
-
 
                     return adapter.fromJson(result);
                 } finally {

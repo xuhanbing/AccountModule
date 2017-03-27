@@ -8,6 +8,7 @@ import com.hanbing.module.account.base.AccountManager;
 import com.hanbing.module.account.base.ErrorCode;
 import com.hanbing.module.account.base.ErrorCodeManager;
 import com.hanbing.module.account.base.HttpService;
+import com.hanbing.module.account.bind.BindManager;
 
 /**
  * Created by hanbing on 2017/3/3
@@ -65,6 +66,20 @@ public class VerifyCodePresenter implements VerifyCodeContract.Presenter {
                         }
                         break;
                     case FAST_LOGIN:
+                        break;
+                    case BIND:
+                        if (BindManager.getInstance().isMobileBinded(mobile)) {
+                            mView.showRequestVerifyCodeError(ErrorCodeManager.parseCode(ErrorCode.BIND_ALREADY_USED));
+                            mView.showRequestVerifyCodeCompleted();
+                            return;
+                        }
+                        break;
+                    case UNBIND:
+                        if (!BindManager.getInstance().isMobileBinded(mobile)) {
+                            mView.showRequestVerifyCodeError(ErrorCodeManager.parseCode(ErrorCode.UNBIND_NOT_BIND));
+                            mView.showRequestVerifyCodeCompleted();
+                            return;
+                        }
                         break;
                 }
 

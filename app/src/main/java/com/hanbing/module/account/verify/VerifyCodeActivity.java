@@ -58,7 +58,6 @@ public class VerifyCodeActivity extends BaseActivity implements VerifyCodeContra
     @Override
     public void showCountDownMillis(long timeInMillis) {
 
-        Log.e(TAG, "timeInMillis=" + timeInMillis);
         timeInMillis /= 1000;
         if (0 >= timeInMillis) {
             mGetVerifyCodeBtn.setText("Get Verify Code");

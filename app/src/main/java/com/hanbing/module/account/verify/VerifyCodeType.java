@@ -8,5 +8,7 @@ public enum VerifyCodeType {
     DEFAULT,//
     REGISTER, //register
     FAST_LOGIN, //fast login
-    FORGET_PWD //forget password
+    FORGET_PWD, //forget password
+    BIND, //bind
+    UNBIND, //unbind
 }

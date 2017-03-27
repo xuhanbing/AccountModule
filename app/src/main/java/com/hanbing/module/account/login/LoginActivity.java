@@ -40,7 +40,7 @@ public class LoginActivity extends BaseActivity  {
         mLoginComponent =  DaggerLoginComponent.builder()
 //                .appModule(new AppModule(getApplication()))
                 .appComponent(App.getAppComponent(this))
-                .loginPresenterModule(new LoginPresenterModule( loginFragment))
+                .loginPresenterModule(new LoginPresenterModule(this, loginFragment))
                 .build();
 
         mLoginComponent.inject(this);

@@ -33,4 +33,32 @@
 
     </LinearLayout>
 
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom">
+
+        <ImageView
+            android:id="@+id/qq_iv"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="60dp"
+            android:src="@drawable/umeng_socialize_qq"/>
+
+        <ImageView
+            android:id="@+id/wx_iv"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="60dp"
+            android:src="@drawable/umeng_socialize_wechat"/>
+
+        <ImageView
+            android:id="@+id/sina_iv"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="60dp"
+            android:src="@drawable/umeng_socialize_sina"/>
+    </LinearLayout>
 </FrameLayout>

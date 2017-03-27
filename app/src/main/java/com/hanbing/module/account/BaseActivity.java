@@ -2,10 +2,13 @@ package com.hanbing.module.account;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+
+import com.umeng.socialize.UMShareAPI;
 
 /**
  * Created by hanbing on 2017/3/3
@@ -23,7 +26,13 @@ public class BaseActivity extends AppCompatActivity {
 
     protected void showProgress(CharSequence title, CharSequence msg) {
         dismissProgress();
-        mProgressDialog = ProgressDialog.show(this, title, msg);
+        ProgressDialog dialog = new ProgressDialog(this);
+        dialog.setTitle(title);
+        dialog.setMessage(msg);
+        dialog.setIndeterminate(true);
+        dialog.setCancelable(true);
+        dialog.show();
+        mProgressDialog = dialog;
     }
 
     protected void dismissProgress() {
@@ -39,7 +48,6 @@ public class BaseActivity extends AppCompatActivity {
 
     protected void showSnackbar(CharSequence msg, CharSequence btnText, View.OnClickListener listener) {
         dismissSnackbar();
-
         dismissKeyboard();
 
         mSnackbar = Snackbar.make(getWindow().getDecorView(), msg, Snackbar.LENGTH_LONG).setAction(btnText, listener);
@@ -64,5 +72,12 @@ public class BaseActivity extends AppCompatActivity {
         dismissProgress();
         dismissSnackbar();
         super.onDestroy();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
     }
 }

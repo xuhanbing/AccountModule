@@ -1,5 +1,7 @@
 package com.hanbing.module.account.login;
 
+import android.app.Activity;
+
 import dagger.Module;
 import dagger.Provides;
 
@@ -10,14 +12,22 @@ import dagger.Provides;
 @Module
 public class LoginPresenterModule {
 
+    Activity mContext;
     LoginContract.View mView;
 
 
-    public LoginPresenterModule(LoginContract.View view) {
+    public LoginPresenterModule(Activity context, LoginContract.View view) {
+        assert null != context;
+        mContext = context;
         assert null != view;
         mView = view;
     }
 
+
+    @Provides
+    Activity provideContext() {
+        return mContext;
+    }
 
 
     @Provides
